@@ -1,0 +1,28 @@
+{
+  "name": "service-worker-renderer",
+  "description": "Service worker side renderer",
+  "author": "YerkoPalma",
+  "version": "0.1.0",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "standard --verbose | snazzy && tape test.js | tap-summary",
+    "start": "node index.js"
+  },
+  "repository": "YerkoPalma/service-worker-renderer",
+  "license": "MIT",
+  "keywords": [
+    "service-worker",
+    "server",
+    "render",
+    "web"
+  ],
+  "devDependencies": {
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.3",
+    "tap-summary": "^4.0.0",
+    "tape": "^4.8.0"
+  }
+}
