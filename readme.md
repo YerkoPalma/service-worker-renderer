@@ -3,5 +3,50 @@
 
 > Service worker side renderer
 
+## Usage
+
+```js
+// sw.js
+importScript('/.service-worker-renderer.js')
+
+self.addEventListener('fetch', async function (event) {
+  var params = getParams(event.request.url, route)
+  event.respondWith(
+    const template = await parseTemplate('/article-template.html')
+    return new Response(renderTemplate(template, params), {
+      headers: {
+        'Content-Type': 'text/html'
+      }
+    })
+  )
+}
+```
+
+```js
+// sw.js
+importScript('/.service-worker-renderer.js')
+
+// define router
+self.addEventListener('install', function (event) {
+  // ...
+  var router = new Router()
+  router.route('/', '/main-template.html')
+  router.route('/article', '/article-template.html')
+
+  self.router = router
+})
+
+self.addEventListener('fetch', function (event) {
+  event.respondWith(
+    return router.match(event.request.url).with(state)
+  )
+}
+```
+
+## API
+### `getParams`
+### `parseTemplate`
+### `renderTemplate`
+### `Router`
 ## License
 [MIT](/license)
