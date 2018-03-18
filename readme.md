@@ -10,10 +10,9 @@
 importScript('/.service-worker-renderer.js')
 
 self.addEventListener('fetch', async function (event) {
-  var params = getParams(event.request.url, route)
   event.respondWith(
     const template = await parseTemplate('/article-template.html')
-    return new Response(renderTemplate(template, params), {
+    return new Response(renderTemplate(template, state), {
       headers: {
         'Content-Type': 'text/html'
       }
@@ -38,7 +37,7 @@ self.addEventListener('install', function (event) {
 
 self.addEventListener('fetch', function (event) {
   event.respondWith(
-    return router.match(event.request.url).with(state)
+    return router.match(event.request.url, state)
   )
 }
 ```
